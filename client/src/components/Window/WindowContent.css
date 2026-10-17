@@ -1,0 +1,396 @@
+/* Shared Styling for Retro Window Contents */
+
+/* =========================================
+   1. Profile Window Content
+   ========================================= */
+.window-profile {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.profile-top-row {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.profile-avatar-wrapper {
+  width: 104px;
+  height: 104px;
+  min-width: 104px;
+  border-radius: 50%;
+  background: #ede6d2;
+  border: 2px solid #555944;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.profile-avatar-img {
+  width: 76%;
+  height: 76%;
+  object-fit: contain;
+}
+
+.profile-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.profile-greeting {
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: #4a4e3b;
+  margin: 0;
+}
+
+.profile-name {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #d97736;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.profile-role {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: #72775f;
+  text-transform: uppercase;
+  margin-top: 4px;
+}
+
+.profile-quote {
+  font-size: 0.92rem;
+  font-style: italic;
+  color: #5d614e;
+  margin: 6px 0 0;
+}
+
+.profile-bio {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #444837;
+  margin: 0;
+  background: rgba(237, 230, 210, 0.45);
+  padding: 14px 16px;
+  border-radius: 8px;
+  border-left: 3px solid #d97736;
+}
+
+/* =========================================
+   2. Works / Projects Window Content
+   ========================================= */
+.window-works {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.works-header-banner {
+  height: 14px;
+  background: #f2a265;
+  border-radius: 4px;
+  margin-bottom: -6px;
+}
+
+.works-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #3e422f;
+  text-align: center;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.project-card {
+  background: #fbf7ee;
+  border: 1.5px solid #84896a;
+  border-radius: 8px;
+  padding: 14px 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  transition: transform 0.15s ease, border-color 0.15s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-2px);
+  border-color: #555944;
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.project-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #333626;
+  margin: 0;
+}
+
+.project-card-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: #ede6d2;
+  color: #555944;
+  padding: 2px 8px;
+  border-radius: 4px;
+  border: 1px solid #c2bba8;
+}
+
+.project-card-desc {
+  font-size: 0.88rem;
+  color: #505442;
+  margin: 0 0 10px;
+  line-height: 1.45;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-tag {
+  font-size: 0.72rem;
+  background: rgba(128, 132, 99, 0.15);
+  color: #4a4e3b;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* =========================================
+   3. Contact Window Content
+   ========================================= */
+.window-contact {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.contact-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #3e422f;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.contact-info-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 10px 14px;
+  background: #ede6d2;
+  border-radius: 6px;
+  border: 1px solid #c2bba8;
+  font-size: 0.88rem;
+  color: #434832;
+}
+
+.contact-info-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: #4a4e3b;
+  text-transform: uppercase;
+}
+
+.form-input,
+.form-textarea {
+  font-family: inherit;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+  background: #fdfaf3;
+  border: 1.5px solid #84896a;
+  border-radius: 6px;
+  color: #333626;
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: #d97736;
+  box-shadow: 0 0 0 2px rgba(217, 119, 54, 0.2);
+}
+
+.form-textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.retro-submit-btn {
+  align-self: flex-start;
+  background-color: #696c53;
+  color: #f6f0df;
+  border: 1.5px solid #3c402b;
+  padding: 8px 18px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  border-radius: 6px;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  transition: background-color 0.15s ease, transform 0.1s ease;
+}
+
+.retro-submit-btn:hover {
+  background-color: #555944;
+  transform: translateY(-1px);
+}
+
+.retro-submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* =========================================
+   4. Resume Window Content
+   ========================================= */
+.window-resume {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.resume-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid #84896a;
+  padding-bottom: 8px;
+}
+
+.resume-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #3e422f;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.resume-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.resume-section-heading {
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #d97736;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.resume-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: #fbf7ee;
+  border-left: 3px solid #84896a;
+  padding: 8px 12px;
+  border-radius: 0 6px 6px 0;
+}
+
+.resume-item-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #333626;
+  margin: 0;
+}
+
+.resume-item-subtitle {
+  font-size: 0.82rem;
+  color: #6a6f58;
+  margin: 0;
+}
+
+.resume-skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.resume-skill-chip {
+  font-size: 0.76rem;
+  background: #ede6d2;
+  color: #4a4e3b;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid #c2bba8;
+  font-weight: 500;
+}
+
+.resume-download-placeholder {
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 8px 16px;
+  font-size: 0.86rem;
+  font-weight: 600;
+  background: #ede6d2;
+  color: #4a4e3b;
+  border: 1.5px solid #84896a;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.resume-download-placeholder:hover {
+  background: #dfd7c0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+  .profile-top-row {
+    flex-direction: column;
+    text-align: center;
+    gap: 14px;
+  }
+
+  .profile-avatar-wrapper {
+    margin: 0 auto;
+  }
+
+  .contact-info-strip {
+    flex-direction: column;
+    gap: 6px;
+  }
+}

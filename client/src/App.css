@@ -1,0 +1,124 @@
+.desktop {
+  min-height: 100vh;
+  min-height: 100dvh;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Desktop Workspace Layout */
+.desktop-workspace {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 48px 56px 140px;
+  box-sizing: border-box;
+  position: relative;
+  width: 100%;
+}
+
+/* Left & Right Shortcut Columns */
+.icons-column {
+  display: flex;
+  flex-direction: column;
+  gap: 76px;
+  z-index: 2;
+}
+
+.icons-left {
+  align-items: flex-start;
+  margin-top: 64px;
+}
+
+.icons-right {
+  align-items: flex-end;
+  align-self: flex-end;
+  margin-top: auto;
+  margin-bottom: 72px;
+}
+
+/* Central PORTFOLIO Heading - Perfectly Centered in Workspace */
+.portfolio-header {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  pointer-events: none;
+  width: max-content;
+  max-width: 75%;
+  text-align: center;
+}
+
+.portfolio-heading {
+  font-family: var(--sans);
+  font-size: clamp(2.8rem, 7.2vw, 6.2rem);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: #72775f;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  user-select: none;
+  line-height: 1.1;
+}
+
+/* Responsive adjustments for mobile/tablet screens */
+@media (max-width: 640px) {
+  .desktop-workspace {
+    padding: 24px 16px 130px;
+  }
+
+  .icons-column {
+    gap: 36px;
+  }
+
+  .icons-left {
+    margin-top: 16px;
+  }
+
+  .icons-right {
+    margin-bottom: 20px;
+  }
+
+  .portfolio-header {
+    top: 42%;
+  }
+
+  .portfolio-heading {
+    font-size: clamp(2rem, 6.5vw, 3rem);
+    letter-spacing: 0.14em;
+  }
+}
+
+/* Very narrow mobile devices (<= 380px) */
+@media (max-width: 380px) {
+  .desktop-workspace {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+      "title title"
+      "left right";
+    gap: 20px;
+    align-items: center;
+  }
+
+  .portfolio-header {
+    grid-area: title;
+    margin-top: 10px;
+  }
+
+  .icons-left {
+    grid-area: left;
+    align-items: center;
+  }
+
+  .icons-right {
+    grid-area: right;
+    align-items: center;
+  }
+}

@@ -1,0 +1,88 @@
+/* Desktop Icon Button Reset & Layout */
+.desktop-icon {
+  background: transparent;
+  border: none;
+  padding: 6px;
+  margin: 0;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 6px;
+  outline: none;
+  transition: transform 0.15s ease-out;
+}
+
+/* Subtle hover scale (1.05) */
+.desktop-icon:hover {
+  transform: scale(1.05);
+}
+
+/* Accessible, visible keyboard focus indicator */
+.desktop-icon:focus-visible {
+  outline: 2px dashed #4b5239;
+  outline-offset: 4px;
+}
+
+/* Fixed container to prevent layout shifting between closed and open states */
+.icon-image-container {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Folder image styling */
+.folder-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* Default state: show closed folder, hide open folder */
+.folder-closed {
+  display: block;
+}
+
+.folder-opened {
+  display: none;
+}
+
+/* Hover and Focus state: hide closed folder, show open folder */
+.desktop-icon:hover .folder-closed,
+.desktop-icon:focus-visible .folder-closed {
+  display: none;
+}
+
+.desktop-icon:hover .folder-opened,
+.desktop-icon:focus-visible .folder-opened {
+  display: block;
+}
+
+/* Retro dark label under each icon */
+.icon-label {
+  margin-top: 5px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: #272c21;
+  text-align: center;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+}
+
+/* Mobile responsive sizing */
+@media (max-width: 640px) {
+  .icon-image-container {
+    width: 54px;
+    height: 54px;
+  }
+  .icon-label {
+    font-size: 12px;
+  }
+}

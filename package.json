@@ -1,0 +1,16 @@
+{
+  "name": "mern-portfolio",
+  "version": "1.0.0",
+  "description": "Full-stack personal portfolio website built with MERN stack",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"npm run server:dev\" \"npm run client:dev\"",
+    "client:dev": "npm --prefix client run dev",
+    "server:dev": "npm --prefix server run dev",
+    "client:build": "npm --prefix client run build",
+    "server:start": "npm --prefix server run start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
