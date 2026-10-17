@@ -3,7 +3,7 @@
 A professional, full-stack personal portfolio website built with MongoDB, Express.js, React.js, and Node.js.
 
 ## Live Deployment Links
-- **Frontend (Client):** [https://your-portfolio.vercel.app](https://your-portfolio.vercel.app) *(Deploy on Vercel / Netlify)*
+- **Frontend (Client):** [https://portfolioprashant57.vercel.app/](https://portfolioprashant57.vercel.app/)
 - **Backend (Server):** [https://your-portfolio-api.onrender.com](https://your-portfolio-api.onrender.com) *(Deploy on Render / Railway)*
 
 ---
@@ -74,8 +74,8 @@ Portfolio/
 
 ### 2. Clone the Repository
 ```bash
-git clone <your-repo-link>
-cd Portfolio
+git clone https://github.com/Prashant-Singh05/MyPortfolio.git
+cd MyPortfolio
 ```
 
 ### 3. Backend Setup (`/server`)
