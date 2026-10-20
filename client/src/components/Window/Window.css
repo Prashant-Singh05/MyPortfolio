@@ -258,8 +258,14 @@
   overflow: hidden;
 }
 
-.retro-window-terminal .resize-grip-svg line {
-  stroke: #4e573f;
+.retro-window-body-settings {
+  padding: 16px 18px !important;
+}
+
+@media (max-width: 640px) {
+  .retro-window-body-settings {
+    padding: 12px !important;
+  }
 }
 
 

@@ -9,10 +9,12 @@ import About from './components/About/About';
 import Projects from './components/Projects/Projects';
 import Contact from './components/Contact/Contact';
 import Hero from './components/Hero/Hero';
-import Navbar from './components/Navbar/Navbar';
+import Settings from './components/Settings/Settings';
 import ResumeContent from './components/Window/content/ResumeContent';
 import TerminalAppContent from './components/Window/content/TerminalAppContent';
+import Navbar from './components/Navbar/Navbar';
 import userIcon from './assets/icons/male-user.png';
+import settingsIcon from './assets/icons/settings.png';
 
 // Configuration mapping folder IDs to their retro path titles
 const WINDOW_REGISTRY = {
@@ -27,6 +29,9 @@ const WINDOW_REGISTRY = {
   },
   resume: {
     title: 'C:\\PORTFOLIO\\resume',
+  },
+  settings: {
+    title: 'C:\\PORTFOLIO\\settings',
   },
   terminal: {
     title: 'C:\\PORTFOLIO\\terminal.exe (bash)',
@@ -44,11 +49,11 @@ const WINDOW_REGISTRY = {
  * @param {number} windowHeight - Viewport height in pixels
  * @returns {object} Layout geometry { left, top, width, height }
  */
-function getTileLayout(index, total, windowWidth, windowHeight) {
+function getTileLayout(windowId, index, total, windowWidth, windowHeight) {
   // Margins to preserve space for left shortcuts, right shortcuts, and bottom dock
   const leftMargin = windowWidth > 1200 ? 130 : 90;
   const rightMargin = windowWidth > 1200 ? 130 : 90;
-  const topMargin = 28;
+  const topMargin = 42; // clearance for top taskbar
   const bottomMargin = 138; // taskbar clearance
 
   const availableWidth = Math.max(300, windowWidth - leftMargin - rightMargin);
@@ -57,11 +62,24 @@ function getTileLayout(index, total, windowWidth, windowHeight) {
   // Mobile & Tablet (< 860px): Stacked responsive cards
   if (windowWidth < 860) {
     const cascade = Math.min(index * 16, 48);
+    const targetH = windowId === 'settings' ? Math.min(240, windowHeight - 160) : Math.min(500, windowHeight - 160);
     return {
       left: 12,
-      top: 16 + cascade,
+      top: 38 + cascade,
       width: Math.max(280, windowWidth - 24),
-      height: Math.min(500, windowHeight - 160),
+      height: targetH,
+    };
+  }
+
+  // Settings window: compact and focused
+  if (windowId === 'settings' && total === 1) {
+    const width = Math.min(500, availableWidth);
+    const height = Math.min(230, availableHeight);
+    return {
+      left: Math.round(leftMargin + (availableWidth - width) / 2),
+      top: Math.round(topMargin + (availableHeight - height) / 2),
+      width,
+      height,
     };
   }
 
@@ -298,6 +316,15 @@ function App() {
         return <Contact />;
       case 'resume':
         return <ResumeContent />;
+      case 'settings':
+        return (
+          <Settings
+            theme={theme}
+            onSelectTheme={setTheme}
+            folderIconSize={folderIconSize}
+            onFolderSizeChange={setFolderIconSize}
+          />
+        );
       case 'terminal':
         return (
           <TerminalAppContent
@@ -312,6 +339,13 @@ function App() {
 
   return (
     <div className="desktop">
+      {/* Top OS Navigation Bar / Taskbar */}
+      <Navbar
+        onOpenWindow={handleOpenWindow}
+        theme={theme}
+        onToggleTheme={handleToggleTheme}
+      />
+
       {/* PHASE 2: Terminal Intro Screen */}
       <AnimatePresence>
         {showIntro && (
@@ -321,14 +355,6 @@ function App() {
 
       {/* PHASE 3: Desktop Workspace with Staggered Entrance */}
       <main className="desktop-workspace">
-        {/* Top OS System Status Bar with Folder Size & Theme Controls */}
-        <Navbar
-          folderIconSize={folderIconSize}
-          onFolderSizeChange={setFolderIconSize}
-          theme={theme}
-          onToggleTheme={handleToggleTheme}
-        />
-
         {/* Left Column: Profile and Works */}
         <motion.section
           className="icons-column icons-left"
@@ -358,7 +384,7 @@ function App() {
           prefersReducedMotion={prefersReducedMotion}
         />
 
-        {/* Right Column: Contact and Resume */}
+        {/* Right Column: Contact, Resume, and Settings */}
         <motion.section
           className="icons-column icons-right"
           aria-label="Right Shortcuts"
@@ -378,6 +404,13 @@ function App() {
             iconSize={folderIconSize}
             onClick={(rect) => handleOpenWindow('resume', rect)}
           />
+          <DesktopIcon
+            label="settings"
+            customIcon={settingsIcon}
+            isOpen={openWindows.includes('settings')}
+            iconSize={folderIconSize}
+            onClick={(rect) => handleOpenWindow('settings', rect)}
+          />
         </motion.section>
 
         {/* PHASE 4 & 5: Windows OS-Style Tiling Layer with macOS Folder Zoom Transitions */}
@@ -389,6 +422,7 @@ function App() {
             const isActive = activeWindowId === windowId;
             const zIndex = isActive ? 100 : 50 + index;
             const tileLayout = getTileLayout(
+              windowId,
               index,
               openWindows.length,
               windowSize.width,
@@ -424,8 +458,6 @@ function App() {
         <Footer
           onOpenTerminal={(rect) => handleOpenWindow('terminal', rect)}
           onReplayIntro={handleReplayIntro}
-          theme={theme}
-          onToggleTheme={handleToggleTheme}
         />
       </motion.div>
     </div>

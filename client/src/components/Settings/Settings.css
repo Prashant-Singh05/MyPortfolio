@@ -1,0 +1,271 @@
+/* ========================================================
+   Clean Linux Settings (GNOME / Hyprland Style)
+   ======================================================== */
+.linux-settings {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--sans);
+  color: var(--text-primary);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.linux-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.linux-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4px;
+}
+
+.linux-group-title {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+}
+
+/* Card Container */
+.linux-card {
+  background: rgba(0, 0, 0, 0.025);
+  border: 1px solid rgba(0, 0, 0, 0.09);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+[data-theme="dark"] .linux-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.linux-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  gap: 16px;
+}
+
+.linux-row-divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0 16px;
+}
+
+[data-theme="dark"] .linux-row-divider {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.linux-row-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.linux-row-icon {
+  font-size: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+}
+
+.linux-row-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.linux-row-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.linux-row-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.linux-status-pill {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  padding: 2px 7px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.05);
+  color: var(--text-secondary);
+  letter-spacing: 0.02em;
+}
+
+[data-theme="dark"] .linux-status-pill {
+  background: rgba(255, 255, 255, 0.06);
+  color: #9da38d;
+}
+
+/* --------------------------------------------------------
+   Folder Size Slider Control
+   -------------------------------------------------------- */
+.linux-size-indicator {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.05);
+  padding: 3px 8px;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+[data-theme="dark"] .linux-size-indicator {
+  background: rgba(255, 255, 255, 0.08);
+  color: #5eead4;
+}
+
+.slider-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.slider-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 140px;
+}
+
+/* Range input styling */
+.linux-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.14);
+  outline: none;
+  cursor: pointer;
+  margin: 6px 0 2px;
+  transition: background-color 0.2s ease;
+}
+
+[data-theme="dark"] .linux-slider {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* WebKit slider thumb */
+.linux-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #63674b;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.linux-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+[data-theme="dark"] .linux-slider::-webkit-slider-thumb {
+  background: #5eead4;
+  border-color: #121510;
+  box-shadow: 0 0 6px rgba(94, 234, 212, 0.4);
+}
+
+/* Mozilla slider thumb */
+.linux-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #63674b;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.linux-slider::-moz-range-thumb:hover {
+  transform: scale(1.15);
+}
+
+[data-theme="dark"] .linux-slider::-moz-range-thumb {
+  background: #5eead4;
+  border-color: #121510;
+  box-shadow: 0 0 6px rgba(94, 234, 212, 0.4);
+}
+
+/* Discrete tick buttons below slider */
+.slider-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 2px;
+}
+
+.slider-tick {
+  background: transparent;
+  border: none;
+  font-family: var(--mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 1px 4px;
+  border-radius: 3px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+.slider-tick:hover {
+  color: var(--text-primary);
+  background: rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .slider-tick:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.slider-tick.active {
+  color: #63674b;
+  font-weight: 700;
+}
+
+[data-theme="dark"] .slider-tick.active {
+  color: #5eead4;
+}
+
+/* Responsive Layout */
+@media (max-width: 640px) {
+  .linux-row {
+    padding: 10px 12px;
+    gap: 10px;
+  }
+
+  .linux-row-slider {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .slider-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .slider-wrapper {
+    flex: 1;
+    max-width: 160px;
+  }
+}

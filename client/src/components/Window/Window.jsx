@@ -222,6 +222,7 @@ function Window({
   };
 
   const isTerminal = id === 'terminal';
+  const isSettings = id === 'settings';
 
   return (
     <motion.div
@@ -301,7 +302,9 @@ function Window({
 
       {/* Window Interior Content */}
       <motion.div
-        className={`retro-window-body ${isTerminal ? 'retro-window-body-terminal' : ''}`}
+        className={`retro-window-body ${isTerminal ? 'retro-window-body-terminal' : ''} ${
+          isSettings ? 'retro-window-body-settings' : ''
+        }`}
         initial={{ opacity: prefersReducedMotion ? 1 : 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: prefersReducedMotion ? 0 : 0.08, duration: 0.18 }}

@@ -80,7 +80,7 @@
 /* Responsive adjustments for mobile/tablet screens */
 @media (max-width: 640px) {
   .desktop-workspace {
-    padding: 24px 16px 130px;
+    padding: 38px 16px 130px;
   }
 
   .icons-column {

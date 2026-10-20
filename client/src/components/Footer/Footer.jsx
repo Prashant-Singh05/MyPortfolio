@@ -2,19 +2,16 @@ import React from 'react';
 import './Footer.css';
 import linkedinIcon from '../../assets/icons/linkedin-transparent.gif';
 import githubIcon from '../../assets/icons/github.png';
-import instaIcon from '../../assets/icons/instagram-transparent.gif';
-import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 /**
  * Footer Component
  * Houses social links, Terminal launcher in the retro dock,
  * and a Dark/Light mode theme toggle in the bottom right system tray.
  */
-function Footer({ onOpenTerminal, onReplayIntro, theme = 'light', onToggleTheme }) {
+function Footer({ onOpenTerminal, onReplayIntro }) {
   const socialLinks = [
-    { name: 'LinkedIn', icon: linkedinIcon, url: 'https://linkedin.com' },
-    { name: 'GitHub', icon: githubIcon, url: 'https://github.com' },
-    { name: 'Instagram', icon: instaIcon, url: 'https://instagram.com' },
+    { name: 'LinkedIn', icon: linkedinIcon, url: 'https://www.linkedin.com/in/prashant-singhh05/' },
+    { name: 'GitHub', icon: githubIcon, url: 'https://github.com/Prashant-Singh05' },
   ];
 
   const handleTerminalClick = (e) => {
@@ -30,8 +27,6 @@ function Footer({ onOpenTerminal, onReplayIntro, theme = 'light', onToggleTheme 
       onReplayIntro();
     }
   };
-
-  const isDark = theme === 'dark';
 
   return (
     <footer className="footer-bar bottom-bar" aria-label="Desktop Taskbar Footer">
@@ -65,16 +60,6 @@ function Footer({ onOpenTerminal, onReplayIntro, theme = 'light', onToggleTheme 
           </span>
         </button>
       </nav>
-
-      {/* Taskbar Bottom Right System Tray: Dark/Light Mode Toggle Switch */}
-      <aside className="footer-system-tray" aria-label="System controls">
-        <ThemeToggle
-          id="desktop-theme-toggle"
-          isDark={isDark}
-          onToggle={onToggleTheme}
-          className="footer-theme-toggle-switch"
-        />
-      </aside>
     </footer>
   );
 }
