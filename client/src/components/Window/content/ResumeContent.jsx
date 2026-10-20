@@ -58,7 +58,7 @@ function ResumeContent() {
 
       {/* Professional Summary */}
       <section className="resume-section">
-        <h3 className="resume-section-heading">PROFESSIONAL SUMMARY</h3>
+        <h3 className="resume-section-heading">ABOUT ME</h3>
         <p className="resume-summary-text">
           Computer Science and Engineering undergraduate at JK Lakshmipat University, Jaipur (2024–2028),
           specializing in responsive web engineering and full-stack software development with React,

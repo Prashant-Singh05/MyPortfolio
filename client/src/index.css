@@ -94,21 +94,22 @@ h1, h2, h3, h4, p {
   color: rgba(220, 211, 187, 0.08) !important;
 }
 
+[data-theme="dark"] .icon-label {
+  color: #e6edf3 !important;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] .desktop-icon:hover .icon-label,
+[data-theme="dark"] .desktop-icon:focus-visible .icon-label {
+  color: #f39c12 !important;
+}
+
 [data-theme="dark"] .footer-bar {
   background-color: rgba(24, 29, 21, 0.88);
   border-top-color: #383f2e;
 }
 
-[data-theme="dark"] .footer-theme-toggle-btn {
-  background: #23281d;
-  border-color: #4a523d;
-  color: #dcd3bb;
-}
 
-[data-theme="dark"] .footer-theme-toggle-btn:hover {
-  background: #2c3325;
-  border-color: #d97736;
-}
 
 [data-theme="dark"] .navbar-folder-size-widget {
   background: rgba(30, 35, 26, 0.82) !important;

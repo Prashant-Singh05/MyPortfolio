@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Googlebot, Bingbot, Applebot, ChatGPT, Perplexity, Claude
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+# Sitemap Location
+Sitemap: https://portfolioprashant57.vercel.app/sitemap.xml

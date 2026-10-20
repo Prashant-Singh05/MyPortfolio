@@ -3,6 +3,7 @@ import './Footer.css';
 import linkedinIcon from '../../assets/icons/linkedin-transparent.gif';
 import githubIcon from '../../assets/icons/github.png';
 import instaIcon from '../../assets/icons/instagram-transparent.gif';
+import ThemeToggle from '../ThemeToggle/ThemeToggle';
 
 /**
  * Footer Component
@@ -65,22 +66,14 @@ function Footer({ onOpenTerminal, onReplayIntro, theme = 'light', onToggleTheme 
         </button>
       </nav>
 
-      {/* Taskbar Bottom Right System Tray: Dark/Light Mode Toggle */}
+      {/* Taskbar Bottom Right System Tray: Dark/Light Mode Toggle Switch */}
       <aside className="footer-system-tray" aria-label="System controls">
-        <button
-          type="button"
-          className="footer-theme-toggle-btn"
-          onClick={onToggleTheme}
-          aria-label={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
-          title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
-        >
-          <span className="footer-theme-icon" aria-hidden="true">
-            {isDark ? '☀️' : '🌙'}
-          </span>
-          <span className="footer-theme-label">
-            {isDark ? 'LIGHT' : 'DARK'}
-          </span>
-        </button>
+        <ThemeToggle
+          id="desktop-theme-toggle"
+          isDark={isDark}
+          onToggle={onToggleTheme}
+          className="footer-theme-toggle-switch"
+        />
       </aside>
     </footer>
   );

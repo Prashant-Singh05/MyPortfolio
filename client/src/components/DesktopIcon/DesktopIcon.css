@@ -119,6 +119,25 @@
   color: #d97736;
 }
 
+/* Dark mode theme styling for desktop folder icon labels */
+[data-theme="dark"] .icon-label {
+  color: #e6edf3;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.9);
+}
+
+[data-theme="dark"] .desktop-icon:hover .icon-label,
+[data-theme="dark"] .desktop-icon:focus-visible .icon-label {
+  color: #f39c12;
+}
+
+[data-theme="dark"] .desktop-icon:hover {
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.65));
+}
+
+[data-theme="dark"] .desktop-icon:focus-visible {
+  outline: 2px dashed #9da38d;
+}
+
 .icon-active-indicator {
   display: inline-block;
   width: 5px;
@@ -130,8 +149,8 @@
 /* Mobile responsive sizing */
 @media (max-width: 640px) {
   .icon-image-container {
-    width: 54px;
-    height: 54px;
+    width: var(--icon-size, 64px);
+    height: var(--icon-size, 64px);
   }
   .icon-label {
     font-size: 12px;

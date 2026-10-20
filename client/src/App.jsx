@@ -321,10 +321,12 @@ function App() {
 
       {/* PHASE 3: Desktop Workspace with Staggered Entrance */}
       <main className="desktop-workspace">
-        {/* Top OS System Status Bar with Folder Size Controls */}
+        {/* Top OS System Status Bar with Folder Size & Theme Controls */}
         <Navbar
           folderIconSize={folderIconSize}
           onFolderSizeChange={setFolderIconSize}
+          theme={theme}
+          onToggleTheme={handleToggleTheme}
         />
 
         {/* Left Column: Profile and Works */}

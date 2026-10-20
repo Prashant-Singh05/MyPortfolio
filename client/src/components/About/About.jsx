@@ -54,14 +54,6 @@ function About() {
             </a>
           </span>
         </div>
-        <div className="about-highlight-card">
-          <span className="highlight-label">Phone</span>
-          <span className="highlight-value">
-            <a href="tel:+918302840321" className="about-contact-link">
-              +91-8302840321
-            </a>
-          </span>
-        </div>
       </div>
 
       {/* Core Technical Proficiencies Summary */}

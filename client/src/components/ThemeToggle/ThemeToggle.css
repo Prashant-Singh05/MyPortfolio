@@ -1,0 +1,116 @@
+/* Capsule Theme Toggle Switch (matches reference design) */
+.retro-theme-toggle {
+  position: relative;
+  width: 58px;
+  height: 30px;
+  background-color: #000000;
+  border: 2px solid #1a1e16;
+  border-radius: 999px;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25), inset 0 1px 2px rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+              background-color 0.24s ease,
+              border-color 0.24s ease,
+              box-shadow 0.24s ease;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.retro-theme-toggle:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  border-color: #3b4231;
+}
+
+.retro-theme-toggle:active {
+  transform: scale(0.96);
+  transition-duration: 0.08s;
+}
+
+.retro-theme-toggle:focus-visible {
+  outline: 2px dashed #d97736;
+  outline-offset: 3px;
+}
+
+/* Icon placement inside the capsule */
+.toggle-icon {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  pointer-events: none;
+  transition: opacity 0.22s ease, transform 0.24s ease;
+}
+
+/* Sun on the left */
+.toggle-sun-icon {
+  left: 6px;
+  width: 16px;
+  height: 16px;
+}
+
+/* Moon on the right */
+.toggle-moon-icon {
+  right: 7px;
+  width: 14px;
+  height: 14px;
+}
+
+/* Sliding circular white thumb */
+.toggle-thumb {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
+  transition: transform 0.26s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
+  pointer-events: none;
+}
+
+/* State: Light Mode (thumb on left over sun, revealing moon on right) */
+.retro-theme-toggle-light .toggle-thumb {
+  transform: translateX(0);
+}
+
+.retro-theme-toggle-light .toggle-sun-icon {
+  opacity: 0.18;
+  transform: translateY(-50%) scale(0.85);
+}
+
+.retro-theme-toggle-light .toggle-moon-icon {
+  opacity: 0.95;
+  transform: translateY(-50%) scale(1);
+}
+
+/* State: Dark Mode (thumb on right, revealing sun on left - EXACTLY matching user reference image) */
+.retro-theme-toggle-dark {
+  border-color: #383f2e;
+}
+
+.retro-theme-toggle-dark .toggle-thumb {
+  transform: translateX(28px);
+}
+
+.retro-theme-toggle-dark .toggle-sun-icon {
+  opacity: 1;
+  transform: translateY(-50%) scale(1);
+}
+
+.retro-theme-toggle-dark .toggle-moon-icon {
+  opacity: 0.18;
+  transform: translateY(-50%) scale(0.85);
+}
