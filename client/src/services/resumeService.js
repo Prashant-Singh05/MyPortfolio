@@ -4,7 +4,9 @@
  * via the Express backend REST API (/api/resume/pdf, /api/resume/docx, /api/resume/view).
  */
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const cleanBase = rawApiUrl.replace(/\/+$/, '');
+const API_BASE_URL = cleanBase.endsWith('/api') ? cleanBase : `${cleanBase}/api`;
 
 /**
  * Triggers a real browser download for either PDF or Word (.docx) resume.

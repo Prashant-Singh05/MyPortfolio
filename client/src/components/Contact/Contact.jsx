@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import './Contact.css';
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const rawApiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+const cleanBase = rawApiUrl.replace(/\/+$/, '');
+const API_BASE_URL = cleanBase.endsWith('/api') ? cleanBase : `${cleanBase}/api`;
 
 /**
  * Contact Component
@@ -144,7 +146,7 @@ function Contact() {
             className="contact-submit-button"
             disabled={isSubmitting}
           >
-            {isSubmitting ? 'Saving to Database...' : 'Send Message \u2192'}
+            {isSubmitting ? 'Saving...' : 'Send Message \u2192'}
           </button>
         </form>
       )}
