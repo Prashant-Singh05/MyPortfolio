@@ -1,5 +1,5 @@
 :root {
-  /* Graph Paper Background Design Tokens (Sampled from Reference) */
+  /* Graph Paper Background Design Tokens (Retro Light Palette) */
   --paper-bg: #F6F0DF;
   --grid-line: #D4CDBC;
   --grid-size: 20px;
@@ -24,6 +24,15 @@
   }
 }
 
+/* Dark Mode Tokens (Sleek Retro Cyber-Terminal Palette) */
+[data-theme="dark"] {
+  --paper-bg: #141712;
+  --grid-line: #21261c;
+  --text-primary: #e6edf3;
+  --text-secondary: #9da38d;
+  color-scheme: dark;
+}
+
 *,
 *::before,
 *::after {
@@ -34,6 +43,7 @@ html {
   margin: 0;
   padding: 0;
   background-color: var(--paper-bg);
+  scroll-behavior: smooth;
 }
 
 body {
@@ -59,6 +69,7 @@ body {
     );
   background-size: var(--grid-size) var(--grid-size);
   background-attachment: scroll;
+  transition: background-color 0.25s ease;
 }
 
 #root {
@@ -74,4 +85,124 @@ body {
 
 h1, h2, h3, h4, p {
   margin: 0;
+}
+
+/* ========================================================
+   Dark Mode Component Theming Overrides
+   ======================================================== */
+[data-theme="dark"] .portfolio-heading {
+  color: rgba(220, 211, 187, 0.08) !important;
+}
+
+[data-theme="dark"] .footer-bar {
+  background-color: rgba(24, 29, 21, 0.88);
+  border-top-color: #383f2e;
+}
+
+[data-theme="dark"] .footer-theme-toggle-btn {
+  background: #23281d;
+  border-color: #4a523d;
+  color: #dcd3bb;
+}
+
+[data-theme="dark"] .footer-theme-toggle-btn:hover {
+  background: #2c3325;
+  border-color: #d97736;
+}
+
+[data-theme="dark"] .navbar-folder-size-widget {
+  background: rgba(30, 35, 26, 0.82) !important;
+  border-color: #444c38 !important;
+}
+
+[data-theme="dark"] .navbar-size-label {
+  color: #9da38d !important;
+}
+
+[data-theme="dark"] .navbar-size-btn {
+  background: #23281e !important;
+  border-color: #444c38 !important;
+  color: #dcd3bb !important;
+}
+
+[data-theme="dark"] .window-frame {
+  background: #1c2118 !important;
+  border-color: #3e4634 !important;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.5) !important;
+}
+
+[data-theme="dark"] .window-titlebar {
+  background: #242a1f !important;
+  border-bottom-color: #3e4634 !important;
+  color: #e6edf3 !important;
+}
+
+[data-theme="dark"] .window-body {
+  background: #181c14 !important;
+  color: #dcd3bb !important;
+}
+
+[data-theme="dark"] .about-section,
+[data-theme="dark"] .projects-section,
+[data-theme="dark"] .contact-section,
+[data-theme="dark"] .window-resume {
+  color: #e2dbca !important;
+}
+
+[data-theme="dark"] .about-bio,
+[data-theme="dark"] .resume-summary-text {
+  background: rgba(32, 38, 27, 0.75) !important;
+  color: #c9c3b2 !important;
+}
+
+[data-theme="dark"] .about-highlight-card,
+[data-theme="dark"] .project-item-card,
+[data-theme="dark"] .contact-form-container,
+[data-theme="dark"] .contact-info-pill,
+[data-theme="dark"] .resume-download-box,
+[data-theme="dark"] .resume-project-item,
+[data-theme="dark"] .certification-card {
+  background: #22271d !important;
+  border-color: #383f2e !important;
+}
+
+[data-theme="dark"] .project-highlight-point,
+[data-theme="dark"] .project-item-desc,
+[data-theme="dark"] .resume-bullet-list li,
+[data-theme="dark"] .resume-project-summary,
+[data-theme="dark"] .timeline-node-desc {
+  color: #c4bead !important;
+}
+
+[data-theme="dark"] .project-item-tag,
+[data-theme="dark"] .about-focus-tag,
+[data-theme="dark"] .resume-language-badge {
+  background: #191d15 !important;
+  border-color: #383f2e !important;
+  color: #dcd3bb !important;
+}
+
+[data-theme="dark"] .project-action-link,
+[data-theme="dark"] .resume-btn-preview {
+  background: #2a3123 !important;
+  border-color: #4a543e !important;
+  color: #e6edf3 !important;
+}
+
+[data-theme="dark"] .project-action-link:hover,
+[data-theme="dark"] .resume-btn-preview:hover {
+  background: #333c2b !important;
+  border-color: #6a7657 !important;
+}
+
+[data-theme="dark"] .contact-field-input,
+[data-theme="dark"] .contact-field-textarea {
+  background: #191d15 !important;
+  border-color: #444c38 !important;
+  color: #f0f4f8 !important;
+}
+
+[data-theme="dark"] .contact-field-input:focus,
+[data-theme="dark"] .contact-field-textarea:focus {
+  border-color: #d97736 !important;
 }

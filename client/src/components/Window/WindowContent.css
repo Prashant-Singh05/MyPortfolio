@@ -305,10 +305,34 @@
   text-transform: uppercase;
 }
 
+.resume-contact-bar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: #72775f;
+  margin-top: 4px;
+}
+
+.resume-contact-bar .bullet-sep {
+  color: #d97736;
+}
+
+.resume-link {
+  color: #3e422f;
+  text-decoration: none;
+  border-bottom: 1px dotted #72775f;
+}
+
+.resume-link:hover {
+  color: #d97736;
+}
+
 .resume-section {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .resume-section-heading {
@@ -320,61 +344,188 @@
   margin: 0;
 }
 
-.resume-item {
+.resume-summary-text {
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #444837;
+  margin: 0;
+  background: rgba(237, 230, 210, 0.45);
+  padding: 10px 14px;
+  border-radius: 6px;
+  border-left: 3px solid #84896a;
+}
+
+.resume-projects-list {
   display: flex;
   flex-direction: column;
-  gap: 2px;
-  background: #fbf7ee;
-  border-left: 3px solid #84896a;
-  padding: 8px 12px;
-  border-radius: 0 6px 6px 0;
+  gap: 12px;
 }
 
-.resume-item-title {
-  font-size: 0.95rem;
-  font-weight: 600;
-  color: #333626;
-  margin: 0;
-}
-
-.resume-item-subtitle {
-  font-size: 0.82rem;
-  color: #6a6f58;
-  margin: 0;
-}
-
-.resume-skills-list {
+.resume-project-item {
+  background: #ede6d2;
+  border: 1px solid #dcd3bb;
+  border-radius: 6px;
+  padding: 12px 14px;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   gap: 6px;
 }
 
-.resume-skill-chip {
-  font-size: 0.76rem;
-  background: #ede6d2;
-  color: #4a4e3b;
-  padding: 4px 10px;
-  border-radius: 4px;
-  border: 1px solid #c2bba8;
-  font-weight: 500;
+.resume-project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.resume-download-placeholder {
-  align-self: flex-start;
-  margin-top: 4px;
-  padding: 8px 16px;
-  font-size: 0.86rem;
+.resume-project-name {
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: #d97736;
+  margin: 0;
+}
+
+.resume-project-stack {
+  font-size: 0.76rem;
   font-weight: 600;
-  background: #ede6d2;
+  color: #72775f;
+}
+
+.resume-project-summary {
+  font-size: 0.86rem;
   color: #4a4e3b;
-  border: 1.5px solid #84896a;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.resume-bullet-list {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-bullet-list li {
+  font-size: 0.86rem;
+  color: #4a4e3b;
+  line-height: 1.4;
+}
+
+.resume-languages-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resume-language-badge {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3e422f;
+  background: #ede6d2;
+  border: 1px solid #dcd3bb;
+  padding: 4px 12px;
+  border-radius: 4px;
+}
+
+/* Download Action Box */
+.resume-download-box {
+  background: #ede6d2;
+  border: 1.5px solid #c2bba2;
+  border-radius: 8px;
+  padding: 14px 16px;
+  margin-top: 4px;
+}
+
+.resume-download-desc {
+  font-size: 0.86rem;
+  color: #555944;
+  margin: 0;
+  line-height: 1.45;
+}
+
+.resume-actions-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+.resume-download-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 8px 16px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  font-family: var(--sans);
   border-radius: 6px;
   cursor: pointer;
-  transition: background-color 0.15s ease;
+  transition: transform 0.15s ease, background-color 0.15s ease, box-shadow 0.15s ease;
 }
 
-.resume-download-placeholder:hover {
-  background: #dfd7c0;
+.resume-download-btn:active {
+  transform: scale(0.96);
+}
+
+.resume-download-btn:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.resume-btn-pdf {
+  background: #d97736;
+  color: #ffffff;
+  border: 1px solid #b85e22;
+  box-shadow: 0 2px 4px rgba(217, 119, 54, 0.25);
+}
+
+.resume-btn-pdf:hover:not(:disabled) {
+  background: #c66727;
+}
+
+.resume-btn-docx {
+  background: #4a6f8a;
+  color: #ffffff;
+  border: 1px solid #3b5a70;
+  box-shadow: 0 2px 4px rgba(74, 111, 138, 0.25);
+}
+
+.resume-btn-docx:hover:not(:disabled) {
+  background: #3c5d75;
+}
+
+.resume-btn-preview {
+  background: #f7f2e2;
+  color: #4a4e3b;
+  border: 1.5px solid #a8ad8d;
+}
+
+.resume-btn-preview:hover {
+  background: #ede6d2;
+  border-color: #63674b;
+}
+
+.resume-status-alert {
+  margin-top: 8px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.status-success {
+  background: #e8f5e9;
+  color: #2e7d32;
+  border: 1px solid #a5d6a7;
+}
+
+.status-error {
+  background: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
 }
 
 /* Responsive adjustments */

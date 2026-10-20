@@ -1,11 +1,6 @@
 /* Retro Desktop Window Shell */
 .retro-window {
   position: absolute;
-  top: calc(44% + var(--cascade-offset, 0px));
-  left: calc(50% + var(--cascade-offset, 0px));
-  transform: translate(-50%, -50%);
-  width: min(90vw, 580px);
-  max-height: min(72vh, 520px);
   background-color: #f7f2e2;
   border: 2px solid #434832;
   border-radius: 12px;
@@ -15,56 +10,64 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
-  animation: retroWindowOpen 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  transition: box-shadow 0.2s ease;
+  transition: 
+    left 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    top 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    width 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    height 0.36s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.24s ease;
   user-select: text;
+  will-change: transform, opacity, left, top, width, height;
+  min-width: 280px;
+  min-height: 180px;
+  transform: translateZ(0);
+  backface-visibility: hidden;
 }
 
 /* Active Window Elevation */
 .retro-window-active {
+  border-color: #d97736;
   box-shadow: 
-    0 22px 48px rgba(35, 38, 24, 0.28),
-    0 6px 16px rgba(0, 0, 0, 0.14);
+    0 24px 52px rgba(35, 38, 24, 0.32),
+    0 8px 20px rgba(217, 119, 54, 0.15);
 }
 
-/* Opening Animation: Fade + Subtle Scale */
-@keyframes retroWindowOpen {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
+.retro-window-dragging,
+.retro-window-resizing {
+  transition: none !important;
+  opacity: 0.96;
+  box-shadow: 0 28px 60px rgba(35, 38, 24, 0.4);
+  user-select: none;
 }
 
-/* Respect Reduced Motion Preferences */
-@media (prefers-reduced-motion: reduce) {
-  .retro-window {
-    animation: none;
-    transition: none;
-  }
-}
-
-/* Retro Olive Green Title Bar */
+/* Retro Olive Green Title Bar with Windows OS Controls */
 .retro-window-titlebar {
   background-color: #696c53;
   color: #f6f0df;
   height: 38px;
   min-height: 38px;
-  padding: 0 12px 0 16px;
+  padding: 0 10px 0 16px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 2px solid #434832;
   user-select: none;
-  cursor: default;
+  cursor: grab;
+  transition: background-color 0.2s ease;
+}
+
+.retro-window-dragging .retro-window-titlebar {
+  cursor: grabbing;
+}
+
+.retro-window-active .retro-window-titlebar {
+  background-color: #585b44;
 }
 
 /* Windows Path-style Monospace Title */
 .retro-window-title {
-  font-family: 'Consolas', 'Courier New', Courier, monospace;
+  font-family: var(--mono);
   font-size: 0.88rem;
   font-weight: 600;
   letter-spacing: 0.04em;
@@ -72,20 +75,27 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  pointer-events: none;
 }
 
-/* Retro Coral/Pink Close Button */
-.retro-window-close-btn {
-  background-color: #e27d79;
+/* Titlebar Action Buttons (Windows OS: Minimize, Maximize, Close) */
+.retro-window-controls {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.retro-window-btn {
+  background-color: #555944;
   border: 1.5px solid #3c402b;
   border-radius: 4px;
-  width: 22px;
+  width: 24px;
   height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fdfaf3;
-  font-size: 16px;
+  font-size: 13px;
   line-height: 1;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   cursor: pointer;
@@ -94,29 +104,51 @@
   outline: none;
 }
 
-.retro-window-close-btn:hover {
-  background-color: #d66561;
-  transform: scale(1.08);
+.retro-window-btn:hover {
+  background-color: #424634;
+  transform: scale(1.06);
 }
 
-.retro-window-close-btn:active {
+.retro-window-btn:active {
   transform: scale(0.95);
 }
 
-.retro-window-close-btn:focus-visible {
+.retro-window-btn:focus-visible {
   outline: 2px solid #f6f0df;
-  outline-offset: 2px;
+  outline-offset: 1px;
+}
+
+.retro-window-min-btn {
+  font-weight: 800;
+  padding-bottom: 5px;
+}
+
+.retro-window-max-btn {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* Retro Coral/Pink Close Button */
+.retro-window-close-btn {
+  background-color: #e27d79;
+  font-size: 16px;
+}
+
+.retro-window-close-btn:hover {
+  background-color: #d66561;
 }
 
 /* Cream-colored Scrollable Window Interior */
 .retro-window-body {
-  padding: 24px 28px;
+  padding: 22px 26px;
   overflow-y: auto;
+  overflow-x: hidden;
   flex: 1;
   color: #3e422f;
   font-family: var(--sans);
   line-height: 1.5;
   background-color: #f7f2e2;
+  position: relative;
 }
 
 /* Custom Vintage Scrollbar */
@@ -134,23 +166,100 @@
   background: #84896a;
 }
 
+/* Corner Drag Resize Grip Handle */
+.retro-window-resize-handle {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 18px;
+  height: 18px;
+  cursor: nwse-resize;
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  padding: 2px;
+  user-select: none;
+  z-index: 20;
+}
+
+.resize-grip-svg {
+  display: block;
+  opacity: 0.7;
+  transition: opacity 0.15s ease;
+}
+
+.retro-window-resize-handle:hover .resize-grip-svg {
+  opacity: 1;
+}
+
 /* Mobile Responsiveness */
 @media (max-width: 640px) {
-  .retro-window {
-    top: 45%;
-    left: 50%;
-    transform: translate(-50%, -50%) !important;
-    width: calc(100% - 24px);
-    max-height: calc(100vh - 160px);
+  .retro-window-body {
+    padding: 16px 14px;
   }
 
-  .retro-window-body {
-    padding: 18px 16px;
+  .retro-window-btn {
+    width: 28px;
+    height: 26px;
+    font-size: 14px;
   }
 
   .retro-window-close-btn {
-    width: 26px;
-    height: 26px;
     font-size: 18px;
   }
 }
+
+/* Terminal Window Overrides - Authentic Windows Terminal Shell (No Cream Borders!) */
+.retro-window-terminal {
+  background-color: #0c0f0a !important;
+  border: 1.5px solid #2d3525 !important;
+  border-radius: 8px;
+}
+
+.retro-window-terminal.retro-window-active {
+  border-color: #556243 !important;
+  box-shadow: 
+    0 24px 60px rgba(0, 0, 0, 0.7),
+    0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.retro-window-terminal .retro-window-titlebar {
+  background-color: #171c13 !important;
+  border-bottom: 1px solid #283020 !important;
+  color: #c9d2c0 !important;
+}
+
+.retro-window-terminal.retro-window-active .retro-window-titlebar {
+  background-color: #1d2418 !important;
+  color: #f0f6fc !important;
+}
+
+.retro-window-terminal .retro-window-btn {
+  background-color: #2b3323 !important;
+  border-color: #3d4932 !important;
+}
+
+.retro-window-terminal .retro-window-btn:hover {
+  background-color: #3b4630 !important;
+}
+
+.retro-window-terminal .retro-window-close-btn {
+  background-color: #c94a46 !important;
+}
+
+.retro-window-terminal .retro-window-close-btn:hover {
+  background-color: #e05652 !important;
+}
+
+.retro-window-body-terminal {
+  padding: 0 !important;
+  background-color: #0c0f0a !important;
+  border-radius: 0 0 7px 7px;
+  overflow: hidden;
+}
+
+.retro-window-terminal .resize-grip-svg line {
+  stroke: #4e573f;
+}
+
+

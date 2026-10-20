@@ -1,0 +1,73 @@
+/* Timeline Component Styling */
+.timeline-component {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-family: var(--sans);
+}
+
+.timeline-heading {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #3e422f;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.timeline-track {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-left: 2px solid #c2bba2;
+  padding-left: 16px;
+  margin-left: 4px;
+}
+
+.timeline-node {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.timeline-node::before {
+  content: '';
+  position: absolute;
+  left: -21px;
+  top: 4px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #d97736;
+  border: 2px solid #f7f2e2;
+}
+
+.timeline-node-period {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #72775f;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.timeline-node-title {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3e422f;
+  margin: 0;
+}
+
+.timeline-node-institution {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #d97736;
+  margin-bottom: 2px;
+}
+
+.timeline-node-desc {
+  font-size: 0.85rem;
+  color: #555944;
+  margin: 0;
+  line-height: 1.4;
+}

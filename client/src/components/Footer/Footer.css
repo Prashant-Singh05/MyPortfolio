@@ -1,0 +1,181 @@
+/* Footer Component Styling (Retro Desktop Dock) */
+.footer-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 116px;
+  background-color: rgba(128, 132, 99, 0.8);
+  border-top: 2px solid #63674b;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Centered Application & Social Dock */
+.footer-dock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+}
+
+.footer-icon-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.24s ease;
+  outline: none;
+  will-change: transform, filter;
+  transform: translateZ(0);
+}
+
+.footer-icon-link:hover {
+  transform: translateY(-6px) scale(1.12);
+  filter: drop-shadow(0 8px 14px rgba(0, 0, 0, 0.3));
+}
+
+.footer-icon-link:active {
+  transform: translateY(1px) scale(0.94);
+  transition-duration: 0.08s;
+}
+
+.footer-icon-link:focus-visible {
+  outline: 2px dashed #f6f0df;
+  outline-offset: 4px;
+  border-radius: 14px;
+}
+
+.footer-icon-box {
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.footer-icon-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* Action Buttons */
+.footer-terminal-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+.footer-terminal-box {
+  background-color: #24291f;
+  border: 2px solid #585f46;
+  border-radius: 12px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.4), 0 2px 6px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.footer-terminal-btn:hover .footer-terminal-box {
+  background-color: #1a1e16;
+  border-color: #d97736;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5), 0 4px 12px rgba(217, 119, 54, 0.25);
+}
+
+.footer-terminal-symbol {
+  font-family: var(--mono);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #d97736;
+  letter-spacing: -0.05em;
+  user-select: none;
+  transition: transform 0.2s ease;
+}
+
+.footer-terminal-btn:hover .footer-terminal-symbol {
+  transform: scale(1.1);
+}
+
+/* System Tray (Bottom Right) */
+.footer-system-tray {
+  position: absolute;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-theme-toggle-btn {
+  background: #ede6d2;
+  border: 1.5px solid #a8ad8d;
+  color: #4a4e3b;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  transition: transform 0.18s cubic-bezier(0.34, 1.56, 0.64, 1), background-color 0.18s ease, border-color 0.18s ease;
+  user-select: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+}
+
+.footer-theme-toggle-btn:hover {
+  background: #fdfaf2;
+  border-color: #63674b;
+  transform: translateY(-2px) scale(1.04);
+}
+
+.footer-theme-toggle-btn:active {
+  transform: scale(0.95);
+}
+
+.footer-theme-icon {
+  font-size: 13px;
+  line-height: 1;
+}
+
+.footer-theme-label {
+  letter-spacing: 0.06em;
+}
+
+@media (max-width: 640px) {
+  .footer-bar {
+    height: 104px;
+  }
+
+  .footer-dock {
+    gap: 16px;
+  }
+
+  .footer-icon-img {
+    width: 48px;
+    height: 48px;
+  }
+
+  .footer-system-tray {
+    right: 12px;
+  }
+
+  .footer-theme-label {
+    display: none;
+  }
+
+  .footer-theme-toggle-btn {
+    padding: 6px 8px;
+  }
+}
+

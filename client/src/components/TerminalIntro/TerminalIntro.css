@@ -1,0 +1,250 @@
+/* Fullscreen Pitch-Black Linux TTY Terminal (inspired by fahru.me) */
+.fahru-terminal-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background-color: #000000;
+  color: #ffffff;
+  font-family: var(--mono);
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 32px 48px;
+  box-sizing: border-box;
+  cursor: text;
+  transition: opacity 0.32s cubic-bezier(0.16, 1, 0.3, 1), transform 0.32s cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: opacity, transform;
+}
+
+.fahru-terminal-exiting {
+  opacity: 0;
+  transform: scale(0.985);
+  pointer-events: none;
+}
+
+.fahru-terminal-container {
+  max-width: 960px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Subtle Top Bar for Quick GUI Access */
+.terminal-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px dashed #262626;
+  padding-bottom: 12px;
+  margin-bottom: 8px;
+  user-select: none;
+}
+
+.terminal-status-tag {
+  font-size: 11px;
+  color: #666666;
+  letter-spacing: 0.1em;
+}
+
+.terminal-quick-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quick-action-btn {
+  background: transparent;
+  border: 1px solid #333333;
+  color: #888888;
+  font-family: inherit;
+  font-size: 11px;
+  padding: 3px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.quick-action-btn:hover {
+  background-color: #1a1a1a;
+  color: #ffffff;
+  border-color: #666666;
+}
+
+/* ASCII Art Banner */
+.ascii-banner {
+  font-family: var(--mono);
+  font-size: 13px;
+  line-height: 1.15;
+  color: #ffffff;
+  margin: 0;
+  white-space: pre;
+  user-select: none;
+  font-weight: 700;
+  overflow-x: auto;
+}
+
+/* Greeting Sequence */
+.greeting-block {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 10px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: #ffffff;
+}
+
+.greeting-line {
+  margin: 0;
+  letter-spacing: 0.02em;
+  animation: terminalFadeIn 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes terminalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* History and Prompt */
+.history-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 12px;
+}
+
+.prompt-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 15px;
+}
+
+.prompt-label {
+  color: #ffffff;
+  font-weight: 700;
+  user-select: none;
+}
+
+.prompt-cmd {
+  color: #e0e0e0;
+}
+
+/* Active Command Prompt Form */
+.active-prompt-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 12px;
+  font-size: 15px;
+  position: relative;
+}
+
+.input-with-caret {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.terminal-real-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+  background: transparent;
+  border: none;
+  color: transparent;
+  outline: none;
+}
+
+.rendered-text {
+  color: #ffffff;
+  white-space: pre;
+}
+
+.blinking-block-caret {
+  display: inline-block;
+  width: 9px;
+  height: 17px;
+  background-color: #ffffff;
+  margin-left: 2px;
+  vertical-align: middle;
+  animation: blockCaretBlink 1s infinite step-start;
+}
+
+@keyframes blockCaretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Help & Command Outputs */
+.terminal-cmd-output {
+  margin-top: 6px;
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.help-heading {
+  margin: 0 0 8px 0;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.help-grid {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  row-gap: 4px;
+  column-gap: 16px;
+}
+
+.help-cmd {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.help-desc {
+  color: #aaaaaa;
+}
+
+.cmd-highlight {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.cmd-error {
+  color: #ff6b6b;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .fahru-terminal-screen {
+    padding: 20px 16px;
+  }
+
+  .ascii-banner {
+    font-size: 8px;
+  }
+
+  .greeting-block,
+  .active-prompt-form,
+  .prompt-row {
+    font-size: 13px;
+  }
+
+  .help-grid {
+    grid-template-columns: 90px 1fr;
+    font-size: 12px;
+  }
+}

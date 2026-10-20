@@ -25,13 +25,13 @@
 .icons-column {
   display: flex;
   flex-direction: column;
-  gap: 76px;
+  gap: clamp(40px, 6vh, 56px);
   z-index: 2;
 }
 
 .icons-left {
   align-items: flex-start;
-  margin-top: 64px;
+  margin-top: 48px;
 }
 
 .icons-right {
@@ -44,14 +44,24 @@
 /* Central PORTFOLIO Heading - Perfectly Centered in Workspace */
 .portfolio-header {
   position: absolute;
-  top: 40%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  top: 38%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   z-index: 1;
   pointer-events: none;
-  width: max-content;
-  max-width: 75%;
   text-align: center;
+}
+
+.portfolio-heading-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform-origin: center center;
 }
 
 .portfolio-heading {
@@ -122,3 +132,4 @@
     align-items: center;
   }
 }
+

@@ -1,0 +1,41 @@
+/* Hero Component Styling (Central Watermark Heading) */
+.hero-header {
+  position: absolute;
+  top: 38%;
+  left: 0;
+  right: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  pointer-events: none;
+  text-align: center;
+}
+
+.hero-heading-wrapper {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform-origin: center center;
+}
+
+.hero-heading {
+  font-family: var(--sans);
+  font-size: clamp(2.8rem, 7.2vw, 6.2rem);
+  font-weight: 300;
+  letter-spacing: 0.18em;
+  color: #72775f;
+  text-transform: uppercase;
+  margin: 0;
+  text-align: center;
+  user-select: none;
+  line-height: 1.1;
+}
+
+@media (max-width: 640px) {
+  .hero-header {
+    top: 42%;
+  }
+}

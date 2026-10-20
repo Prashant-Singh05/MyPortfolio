@@ -1,0 +1,140 @@
+/* Projects Component Styling */
+.projects-section {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-family: var(--sans);
+}
+
+.projects-header-banner {
+  height: 14px;
+  background: #f2a265;
+  border-radius: 4px;
+  margin-bottom: -6px;
+}
+
+.projects-section-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #3e422f;
+  margin: 0;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.projects-cards-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.project-item-card {
+  background: #ede6d2;
+  border: 1px solid #dcd3bb;
+  border-radius: 8px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.project-item-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.project-item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.project-item-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #d97736;
+  margin: 0;
+}
+
+.project-item-subtitle {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #72775f;
+  margin-top: 2px;
+}
+
+.project-item-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #72775f;
+  background: #e0d8c0;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.project-item-highlights {
+  margin: 0;
+  padding-left: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.project-highlight-point {
+  font-size: 0.88rem;
+  color: #4a4e3b;
+  line-height: 1.45;
+}
+
+.project-item-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+  padding-top: 8px;
+  border-top: 1px dashed rgba(85, 89, 68, 0.18);
+}
+
+.project-item-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.project-item-tag {
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #555944;
+  background: rgba(85, 89, 68, 0.12);
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+.project-item-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.project-action-link {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #3e422f;
+  background: #e2dbca;
+  border: 1px solid #c2bba2;
+  border-radius: 4px;
+  padding: 4px 10px;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.project-action-link:hover {
+  background: #d4cbba;
+}

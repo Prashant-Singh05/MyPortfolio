@@ -1,0 +1,351 @@
+/* Windowed Terminal Application Styling */
+.terminal-app-window {
+  width: 100%;
+  height: 100%;
+  min-height: 280px;
+  background-color: #0c0f0a;
+  color: #e0e5d4;
+  font-family: var(--mono);
+  font-size: 13.5px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  cursor: text;
+  border-radius: 0;
+}
+
+.terminal-app-scroll {
+  padding: 16px 20px;
+  overflow-y: auto;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+
+/* Row & Prompt Line */
+.terminal-app-row {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.terminal-app-prompt-line {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.terminal-ps-label {
+  color: #7ee787;
+  font-weight: 700;
+  user-select: none;
+  white-space: nowrap;
+}
+
+.terminal-ps-input {
+  color: #f0f6fc;
+}
+
+.terminal-active-line-form {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-top: 4px;
+  position: relative;
+}
+
+.terminal-interactive-input-wrap {
+  display: inline-flex;
+  align-items: center;
+  position: relative;
+  flex: 1;
+}
+
+.terminal-real-cli-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: text;
+  background: transparent;
+  border: none;
+  outline: none;
+}
+
+.terminal-cli-preview {
+  color: #f0f6fc;
+  white-space: pre;
+}
+
+.terminal-real-caret {
+  display: inline-block;
+  width: 8px;
+  height: 1.1em;
+  background-color: #7ee787;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: cliCaretBlink 1s infinite step-start;
+}
+
+@keyframes cliCaretBlink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* Command Output */
+.terminal-output-container {
+  padding-left: 4px;
+  color: #c9d1d9;
+}
+
+.cli-output-block {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cli-heading {
+  margin: 0 0 6px 0;
+  color: #d2a8ff;
+  font-weight: 600;
+}
+
+.cli-table {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  row-gap: 4px;
+  column-gap: 16px;
+}
+
+.cli-col-cmd {
+  color: #79c0ff;
+  font-weight: 600;
+}
+
+.cli-col-desc {
+  color: #8b949e;
+}
+
+.cli-files-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 4px 0;
+}
+
+.file-dir {
+  color: #58a6ff;
+  font-weight: 700;
+}
+
+.file-txt {
+  color: #e6edf3;
+}
+
+.cli-highlight {
+  color: #ffa657;
+  font-weight: 600;
+}
+
+.cli-error {
+  color: #ff7b72;
+  margin: 2px 0;
+}
+
+.cli-success {
+  color: #7ee787;
+  margin: 2px 0;
+}
+
+.cli-output-msg {
+  margin: 2px 0;
+  color: #e6edf3;
+}
+
+.cli-history-row {
+  margin: 1px 0;
+}
+
+.history-num {
+  color: #6e7681;
+  display: inline-block;
+  width: 24px;
+}
+
+.cli-code-block {
+  background-color: #161b13;
+  border: 1px solid #2f3827;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 4px 0;
+  color: #e6edf3;
+  overflow-x: auto;
+}
+
+/* Neofetch Styling */
+.neofetch-container {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin: 8px 0;
+  padding: 8px;
+  background: rgba(22, 27, 19, 0.45);
+  border-radius: 6px;
+}
+
+.neofetch-logo {
+  font-family: var(--mono);
+  font-weight: 700;
+  color: #7ee787;
+  margin: 0;
+  line-height: 1.15;
+}
+
+.neofetch-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 12.5px;
+}
+
+.neofetch-title {
+  margin: 0;
+  font-weight: 700;
+  color: #79c0ff;
+}
+
+.neofetch-divider {
+  color: #484f58;
+}
+
+.neofetch-key {
+  color: #ffa657;
+  font-weight: 600;
+}
+
+.neofetch-colors {
+  display: flex;
+  gap: 4px;
+  margin-top: 6px;
+}
+
+.color-box {
+  width: 14px;
+  height: 10px;
+  border-radius: 2px;
+  display: inline-block;
+}
+
+.color-black   { background-color: #484f58; }
+.color-red     { background-color: #ff7b72; }
+.color-green   { background-color: #7ee787; }
+.color-yellow  { background-color: #d29922; }
+.color-blue    { background-color: #58a6ff; }
+.color-magenta { background-color: #bc8cff; }
+.color-cyan    { background-color: #39c5cf; }
+.color-white   { background-color: #f0f6fc; }
+
+/* Custom Scrollbar */
+.terminal-app-scroll::-webkit-scrollbar {
+  width: 7px;
+}
+.terminal-app-scroll::-webkit-scrollbar-track {
+  background: #0c0f0a;
+}
+.terminal-app-scroll::-webkit-scrollbar-thumb {
+  background: #2b3323;
+  border-radius: 3px;
+}
+.terminal-app-scroll::-webkit-scrollbar-thumb:hover {
+  background: #3e4834;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 640px) {
+  .terminal-app-scroll {
+    padding: 12px 14px;
+    font-size: 12.5px;
+  }
+  .cli-table {
+    grid-template-columns: 100px 1fr;
+    font-size: 12px;
+  }
+  .neofetch-container {
+    flex-direction: column;
+    gap: 10px;
+  }
+}
+
+/* ls -l Long Output Rows */
+.cli-long-row {
+  margin: 1px 0;
+  display: flex;
+  gap: 12px;
+  font-size: 13px;
+}
+
+.cli-dim {
+  color: #6e7681;
+  margin: 2px 0;
+}
+
+.cli-perm {
+  color: #79c0ff;
+  width: 90px;
+}
+
+.cli-owner {
+  color: #8b949e;
+  width: 110px;
+}
+
+.cli-size {
+  color: #d2a8ff;
+  width: 50px;
+  text-align: right;
+}
+
+.cli-date {
+  color: #8b949e;
+  width: 90px;
+}
+
+/* Terminal Theme Variations */
+.terminal-theme-matrix {
+  color: #00ff66;
+}
+.terminal-theme-matrix .terminal-ps-label,
+.terminal-theme-matrix .neofetch-logo {
+  color: #00ff66;
+}
+.terminal-theme-matrix .terminal-real-caret {
+  background-color: #00ff66;
+}
+
+.terminal-theme-amber {
+  color: #ffb000;
+}
+.terminal-theme-amber .terminal-ps-label,
+.terminal-theme-amber .neofetch-logo {
+  color: #ffb000;
+}
+.terminal-theme-amber .terminal-real-caret {
+  background-color: #ffb000;
+}
+
+.terminal-theme-cyan {
+  color: #00f0ff;
+}
+.terminal-theme-cyan .terminal-ps-label,
+.terminal-theme-cyan .neofetch-logo {
+  color: #00f0ff;
+}
+.terminal-theme-cyan .terminal-real-caret {
+  background-color: #00f0ff;
+}

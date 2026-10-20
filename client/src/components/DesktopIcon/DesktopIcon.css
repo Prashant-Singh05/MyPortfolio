@@ -10,14 +10,22 @@
   justify-content: center;
   cursor: pointer;
   user-select: none;
-  border-radius: 6px;
+  border-radius: 8px;
   outline: none;
-  transition: transform 0.15s ease-out;
+  transition: transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.24s ease;
+  will-change: transform, filter;
+  transform: translateZ(0);
 }
 
-/* Subtle hover scale (1.05) */
+/* Tactile macOS-style hover and active states */
 .desktop-icon:hover {
-  transform: scale(1.05);
+  transform: translateY(-4px) scale(1.06);
+  filter: drop-shadow(0 8px 14px rgba(45, 49, 32, 0.18));
+}
+
+.desktop-icon:active {
+  transform: translateY(0px) scale(0.95);
+  transition-duration: 0.08s;
 }
 
 /* Accessible, visible keyboard focus indicator */
@@ -28,12 +36,13 @@
 
 /* Fixed container to prevent layout shifting between closed and open states */
 .icon-image-container {
-  width: 64px;
-  height: 64px;
+  width: var(--icon-size, 64px);
+  height: var(--icon-size, 64px);
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Folder image styling */
@@ -42,31 +51,55 @@
   height: 100%;
   object-fit: contain;
   display: block;
+  user-select: none;
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 
-/* Default state: show closed folder, hide open folder */
+/* Silky cross-fade between closed and open states */
+.folder-closed,
+.folder-opened {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: opacity 0.22s cubic-bezier(0.16, 1, 0.3, 1), transform 0.24s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: opacity, transform;
+}
+
 .folder-closed {
-  display: block;
+  opacity: 1;
+  transform: scale(1);
 }
 
 .folder-opened {
-  display: none;
+  opacity: 0;
+  transform: scale(0.94);
 }
 
-/* Hover and Focus state: hide closed folder, show open folder */
+/* Hover and Focus state: cross-fade to opened folder */
 .desktop-icon:hover .folder-closed,
 .desktop-icon:focus-visible .folder-closed {
-  display: none;
+  opacity: 0;
+  transform: scale(0.94);
 }
 
 .desktop-icon:hover .folder-opened,
 .desktop-icon:focus-visible .folder-opened {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* When open state is maintained by an active window */
+.folder-persisted-open {
+  position: relative;
   display: block;
+  transform: scale(1);
+  transition: transform 0.2s ease;
 }
 
 /* Retro dark label under each icon */
 .icon-label {
-  margin-top: 5px;
+  margin-top: 6px;
   font-family: var(--sans);
   font-size: 13px;
   font-weight: 600;
@@ -74,6 +107,24 @@
   text-align: center;
   letter-spacing: 0.2px;
   line-height: 1.2;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  transition: color 0.18s ease;
+}
+
+.desktop-icon:hover .icon-label {
+  color: #d97736;
+}
+
+.icon-active-indicator {
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: #d97736;
 }
 
 /* Mobile responsive sizing */
