@@ -1,4 +1,6 @@
-/* Linux Hyprland / Waybar Desktop Top Bar */
+/* ========================================================
+   Linux Hyprland / Waybar Desktop Top Navigation Bar
+   ======================================================== */
 .hypr-bar {
   position: fixed;
   top: 6px;
@@ -9,12 +11,12 @@
   align-items: center;
   justify-content: space-between;
   z-index: 1000;
-  pointer-events: none; /* Allows clicks through empty space between floating modules */
+  pointer-events: none; /* Clicks pass through empty desktop space */
   user-select: none;
   font-family: var(--mono);
 }
 
-/* Floating Glass Pills */
+/* Base Frosted Glass Pill Module */
 .hypr-pill {
   pointer-events: auto;
   display: inline-flex;
@@ -23,97 +25,110 @@
   height: 32px;
   padding: 0 10px;
   border-radius: 8px;
-  background: rgba(246, 240, 223, 0.85);
+  background: rgba(246, 240, 223, 0.88);
   border: 1px solid rgba(176, 180, 153, 0.55);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   color: #2b3021;
   font-size: 11.5px;
-  transition: background-color 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, color 0.25s ease;
+  transition: background-color 0.22s ease, border-color 0.22s ease, box-shadow 0.22s ease, color 0.22s ease;
 }
 
 [data-theme="dark"] .hypr-pill {
-  background: rgba(18, 22, 17, 0.82);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(18, 22, 17, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.09);
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.45);
   color: #dce3d2;
 }
 
-/* LEFT MODULE: Launcher Button */
+/* ========================================================
+   LEFT MODULE: Professional Hyprland Launcher & Workspaces
+   ======================================================== */
 .hypr-left-module {
   position: relative;
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
+/* 32x32 Squircle Icon Launcher Button (No Text) */
 .hypr-launcher-btn {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
-  border: 1px solid rgba(176, 180, 153, 0.6);
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  padding: 0 12px;
-  gap: 7px;
   outline: none;
+  border-radius: 8px;
+  border: 1px solid rgba(168, 173, 141, 0.65);
+  background: linear-gradient(135deg, rgba(246, 240, 223, 0.95), rgba(235, 228, 209, 0.9));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.6);
 }
 
 .hypr-launcher-btn:hover {
   border-color: #63674b;
-  box-shadow: 0 4px 16px rgba(99, 103, 75, 0.15);
+  box-shadow: 0 4px 14px rgba(99, 103, 75, 0.25);
+}
+
+[data-theme="dark"] .hypr-launcher-btn {
+  background: linear-gradient(135deg, rgba(26, 32, 24, 0.95), rgba(18, 22, 17, 0.9));
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.12);
 }
 
 [data-theme="dark"] .hypr-launcher-btn:hover {
-  border-color: rgba(94, 234, 212, 0.4);
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  border-color: #5eead4;
+  box-shadow: 0 0 14px rgba(94, 234, 212, 0.35);
 }
 
 .hypr-launcher-btn.active {
   background: #63674b;
-  color: #f7f2e2;
   border-color: #4a4e3b;
 }
 
 [data-theme="dark"] .hypr-launcher-btn.active {
-  background: #252e20;
-  color: #5eead4;
-  border-color: rgba(94, 234, 212, 0.5);
+  background: rgba(36, 48, 34, 0.95);
+  border-color: #5eead4;
+  box-shadow: 0 0 16px rgba(94, 234, 212, 0.45);
 }
 
-.hypr-launcher-icon {
+.hypr-launcher-glyph {
   display: inline-flex;
   align-items: center;
-  color: #72775f;
+  justify-content: center;
+  color: #63674b;
+  transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1), color 0.2s ease;
 }
 
-.hypr-launcher-btn.active .hypr-launcher-icon {
-  color: #f7f2e2;
-}
-
-[data-theme="dark"] .hypr-launcher-icon {
+[data-theme="dark"] .hypr-launcher-glyph {
   color: #5eead4;
 }
 
-.hypr-launcher-label {
-  text-transform: uppercase;
-  font-size: 11px;
+/* Morph 4 tiles to 'X' on open */
+.hypr-launcher-glyph.open {
+  transform: rotate(45deg);
+  color: #ef4444;
 }
 
-/* Pulsing Status Dot */
-.hypr-status-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #4ade80;
-  box-shadow: 0 0 6px rgba(74, 222, 128, 0.8);
-  margin-left: 1px;
+[data-theme="dark"] .hypr-launcher-glyph.open {
+  color: #f87171;
 }
 
-/* WOFI / ROFI APP LAUNCHER MODAL */
+
+
+/* ========================================================
+   WOFI / ROFI APP LAUNCHER MODAL
+   ======================================================== */
 .hypr-launcher-window {
   pointer-events: auto;
   position: absolute;
   top: calc(100% + 8px);
   left: 0;
   width: 280px;
-  background: rgba(252, 249, 240, 0.95);
+  background: rgba(252, 249, 240, 0.96);
   border: 1px solid rgba(168, 173, 141, 0.7);
   border-radius: 12px;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
@@ -127,12 +142,11 @@
 }
 
 [data-theme="dark"] .hypr-launcher-window {
-  background: rgba(18, 22, 17, 0.94);
-  border-color: rgba(255, 255, 255, 0.12);
-  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65), 0 2px 10px rgba(0, 0, 0, 0.4);
+  background: rgba(18, 22, 17, 0.95);
+  border-color: rgba(94, 234, 212, 0.25);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65), 0 0 16px rgba(94, 234, 212, 0.12);
 }
 
-/* Prompt Search Bar */
 .hypr-search-box {
   display: flex;
   align-items: center;
@@ -192,7 +206,6 @@
   color: #5eead4;
 }
 
-/* App List Entries */
 .hypr-app-list {
   display: flex;
   flex-direction: column;
@@ -268,7 +281,6 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
-/* Launcher Quick Hint Footer */
 .hypr-launcher-footer {
   display: flex;
   justify-content: space-between;
@@ -287,7 +299,9 @@
   color: #7b846e;
 }
 
-/* CENTER MODULE: Clock Pill */
+/* ========================================================
+   CENTER MODULE: Waybar Clock
+   ======================================================== */
 .hypr-center-module {
   position: absolute;
   left: 50%;
@@ -323,14 +337,16 @@
   font-weight: 700;
 }
 
-/* RIGHT MODULE: Theme Switch & System Tray */
+/* ========================================================
+   RIGHT MODULE: Theme Switch & Workable System Tray
+   ======================================================== */
 .hypr-right-module {
+  position: relative;
   display: flex;
   align-items: center;
   gap: 6px;
 }
 
-/* Hardware Capsule Theme Toggle Island (Placed before System Tray) */
 .hypr-toggle-pill {
   padding: 0 5px;
   display: inline-flex;
@@ -348,37 +364,306 @@
 }
 
 .hypr-tray-pill {
-  gap: 10px;
-  padding: 0 10px;
+  gap: 4px;
+  padding: 0 6px;
 }
 
-.hypr-tray-item {
+/* Interactive Tray Action Buttons */
+.hypr-tray-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  color: inherit;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 5px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  color: inherit;
-  opacity: 0.85;
-  transition: opacity 0.15s ease, transform 0.15s ease;
-  cursor: default;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+  outline: none;
 }
 
-.hypr-tray-item:hover {
-  opacity: 1;
-  transform: scale(1.1);
+.hypr-tray-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: scale(1.08);
 }
 
-.hypr-battery-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
+[data-theme="dark"] .hypr-tray-btn:hover {
+  background: rgba(255, 255, 255, 0.09);
+  color: #5eead4;
+}
+
+.hypr-tray-btn.active {
+  background: rgba(99, 103, 75, 0.2);
+  border-color: rgba(99, 103, 75, 0.4);
+}
+
+[data-theme="dark"] .hypr-tray-btn.active {
+  background: rgba(94, 234, 212, 0.16);
+  border-color: rgba(94, 234, 212, 0.35);
+  color: #5eead4;
+}
+
+.hypr-tray-battery {
+  gap: 3px;
 }
 
 .hypr-battery-pct {
-  font-size: 10.5px;
+  font-size: 10px;
+  font-weight: 700;
+  font-family: var(--mono);
+}
+
+/* ========================================================
+   WORKABLE SYSTEM TRAY FLYOUT CARDS
+   ======================================================== */
+.hypr-flyout-card {
+  pointer-events: auto;
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  width: 240px;
+  background: rgba(252, 249, 240, 0.96);
+  border: 1px solid rgba(168, 173, 141, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.18), 0 2px 8px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1010;
+  color: #1e1e1e;
+}
+
+[data-theme="dark"] .hypr-flyout-card {
+  background: rgba(18, 22, 17, 0.95);
+  border-color: rgba(94, 234, 212, 0.25);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.65), 0 0 16px rgba(94, 234, 212, 0.12);
+  color: #dce3d2;
+}
+
+.flyout-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-bottom: 8px;
+}
+
+[data-theme="dark"] .flyout-header {
+  border-bottom-color: rgba(255, 255, 255, 0.08);
+}
+
+.flyout-icon {
+  font-size: 15px;
+}
+
+.flyout-title {
+  font-size: 12.5px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.flyout-badge {
+  font-size: 10px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(0, 0, 0, 0.06);
+  margin-left: auto;
+}
+
+.badge-online {
+  background: rgba(34, 197, 94, 0.15);
+  color: #16a34a;
+}
+
+[data-theme="dark"] .badge-online {
+  background: rgba(74, 222, 128, 0.15);
+  color: #4ade80;
+}
+
+.badge-offline {
+  background: rgba(239, 68, 68, 0.15);
+  color: #dc2626;
+}
+
+.flyout-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 11.5px;
+}
+
+.flyout-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flyout-label {
+  opacity: 0.65;
+}
+
+.flyout-val {
   font-weight: 600;
 }
 
-/* Responsive adjustments */
+/* Volume Slider */
+.flyout-slider-wrap {
+  display: flex;
+  align-items: center;
+  padding: 4px 0;
+}
+
+.hypr-flyout-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.12);
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+[data-theme="dark"] .hypr-flyout-slider {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.hypr-flyout-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #63674b;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: transform 0.15s ease;
+}
+
+.hypr-flyout-slider::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+[data-theme="dark"] .hypr-flyout-slider::-webkit-slider-thumb {
+  background: #5eead4;
+  border-color: #121510;
+  box-shadow: 0 0 8px rgba(94, 234, 212, 0.5);
+}
+
+.hypr-flyout-slider::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #63674b;
+  border: 2px solid #ffffff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+/* Flyout Action Buttons */
+.flyout-actions-row {
+  display: flex;
+  gap: 8px;
+}
+
+.flyout-action-btn {
+  flex: 1;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 6px 8px;
+  border-radius: 6px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease, transform 0.12s ease;
+}
+
+.flyout-action-btn:hover {
+  background: rgba(0, 0, 0, 0.08);
+  transform: translateY(-1px);
+}
+
+[data-theme="dark"] .flyout-action-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .flyout-action-btn:hover {
+  background: rgba(94, 234, 212, 0.15);
+  border-color: rgba(94, 234, 212, 0.35);
+  color: #5eead4;
+}
+
+.flyout-action-btn.active-mute {
+  background: rgba(239, 68, 68, 0.15);
+  border-color: rgba(239, 68, 68, 0.35);
+  color: #ef4444;
+}
+
+/* Power Profiles */
+.flyout-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  opacity: 0.65;
+  margin-top: 4px;
+}
+
+.flyout-profiles-group {
+  display: flex;
+  gap: 4px;
+}
+
+.profile-pill {
+  flex: 1;
+  padding: 5px 4px;
+  border-radius: 5px;
+  font-size: 10.5px;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid transparent;
+  color: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.profile-pill:hover {
+  background: rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .profile-pill {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .profile-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.profile-pill.active {
+  background: #63674b !important;
+  color: #ffffff !important;
+  border-color: #4a4e3b !important;
+}
+
+[data-theme="dark"] .profile-pill.active {
+  background: rgba(94, 234, 212, 0.22) !important;
+  color: #5eead4 !important;
+  border-color: rgba(94, 234, 212, 0.5) !important;
+}
+
+/* ========================================================
+   RESPONSIVE ADJUSTMENTS
+   ======================================================== */
 @media (max-width: 640px) {
   .hypr-bar {
     top: 4px;
@@ -401,6 +686,10 @@
     width: 250px;
   }
 
+  .hypr-flyout-card {
+    width: 210px;
+  }
+
   .hypr-battery-pct {
     display: none;
   }
@@ -414,8 +703,12 @@
   }
 
   .hypr-tray-pill {
-    gap: 7px;
-    padding: 0 7px;
+    gap: 2px;
+    padding: 0 4px;
+  }
+
+  .hypr-tray-btn {
+    padding: 3px 4px;
   }
 
   .navbar-theme-toggle {

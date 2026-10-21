@@ -23,7 +23,7 @@ function ResumeContent() {
 
       setStatusMessage({
         type: 'success',
-        text: `Prashant_Singh_Resume.${format} downloaded successfully from server.`,
+        text: 'Download successful',
       });
     } catch (err) {
       setStatusMessage({
@@ -114,7 +114,7 @@ function ResumeContent() {
       <section className="resume-section resume-download-box">
         <h3 className="resume-section-heading">OFFICIAL RESUME DOWNLOADS</h3>
         <p className="resume-download-desc">
-          Download Prashant Singh's verified resume served directly by the Node.js/Express backend API (excluding cover letter).
+          Download Prashant Singh's verified resume served directly by the Node.js/Express backend API.
         </p>
 
         <div className="resume-actions-group">

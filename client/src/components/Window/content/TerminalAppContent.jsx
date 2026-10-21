@@ -11,6 +11,42 @@ import './TerminalAppContent.css';
  * - Portfolio Operations: open, start, close, neofetch, theme, history, clear, cls, help, man, exit
  * - Keystroke Features: ArrowUp / ArrowDown history, Tab autocompletion, Ctrl+L, Ctrl+C
  */
+const renderNeofetchOutput = () => (
+  <div className="neofetch-container">
+    <pre className="neofetch-logo">
+{`       /\\
+      /  \\
+     / /\\ \\
+    / /__\\ \\
+   / /____\\ \\
+  /_/      \\_\\`}
+    </pre>
+    <div className="neofetch-info">
+      <p className="neofetch-title">prashant@portfolio</p>
+      <div className="neofetch-divider">------------------</div>
+      <p><span className="neofetch-key">OS:</span> PrashantOS (Hyprland / Linux Desktop)</p>
+      <p><span className="neofetch-key">Host:</span> Portfolio Workstation</p>
+      <p><span className="neofetch-key">Kernel:</span> 6.8.0-generic x86_64</p>
+      <p><span className="neofetch-key">Degree:</span> B.Tech CSE (Class of 2028)</p>
+      <p><span className="neofetch-key">Framework:</span> React 19 + Vite 8</p>
+      <p><span className="neofetch-key">Physics:</span> Motion (Spring Animations)</p>
+      <p><span className="neofetch-key">Shell:</span> bash 5.2.21</p>
+      <p><span className="neofetch-key">WM:</span> Hyprland / Wayland</p>
+      <p><span className="neofetch-key">Uptime:</span> 100% Ready for Viva</p>
+      <div className="neofetch-colors">
+        <span className="color-box color-black" />
+        <span className="color-box color-red" />
+        <span className="color-box color-green" />
+        <span className="color-box color-yellow" />
+        <span className="color-box color-blue" />
+        <span className="color-box color-magenta" />
+        <span className="color-box color-cyan" />
+        <span className="color-box color-white" />
+      </div>
+    </div>
+  </div>
+);
+
 function TerminalAppContent({ onOpenWindow, onCloseWindow }) {
   const COMMAND_LIST = [
     'help', 'man', 'ls', 'dir', 'tree', 'cd', 'pwd', 'cat', 'grep', 'head', 'tail', 'wc',
@@ -48,7 +84,14 @@ function TerminalAppContent({ onOpenWindow, onCloseWindow }) {
 
   const [inputVal, setInputVal] = useState('');
   const [themeMode, setThemeMode] = useState('default'); // 'default', 'matrix', 'amber', 'cyan'
-  const [history, setHistory] = useState([]);
+  const [history, setHistory] = useState([
+    {
+      type: 'cmd',
+      dir: '~',
+      cmd: 'neofetch',
+      output: renderNeofetchOutput(),
+    },
+  ]);
 
   const [enteredCommands, setEnteredCommands] = useState([]);
   const [historyPointer, setHistoryPointer] = useState(-1);
@@ -805,38 +848,7 @@ ${calRows.map(row => row.map(d => d.trim() === currentDay.toString() ? `[${d}]` 
 
       case 'neofetch':
       case 'fastfetch':
-        output = (
-          <div className="neofetch-container">
-            <pre className="neofetch-logo">
-{`       /\\
-      /  \\
-     / /\\ \\
-    / /__\\ \\
-   / /____\\ \\
-  /_/      \\_\\`}
-            </pre>
-            <div className="neofetch-info">
-              <p className="neofetch-title">prashant@portfolio</p>
-              <div className="neofetch-divider">------------------</div>
-              <p><span className="neofetch-key">OS:</span> PrashantOS (Windows 11 / Tiling Web)</p>
-              <p><span className="neofetch-key">Degree:</span> B.Tech CSE (Class of 2026)</p>
-              <p><span className="neofetch-key">Framework:</span> React 19.2.8 + Vite 8</p>
-              <p><span className="neofetch-key">Physics:</span> Motion (Spring Animations)</p>
-              <p><span className="neofetch-key">Shell:</span> Bash 5.2 / WebCLI</p>
-              <p><span className="neofetch-key">Uptime:</span> 100% Ready for Viva</p>
-              <div className="neofetch-colors">
-                <span className="color-box color-black" />
-                <span className="color-box color-red" />
-                <span className="color-box color-green" />
-                <span className="color-box color-yellow" />
-                <span className="color-box color-blue" />
-                <span className="color-box color-magenta" />
-                <span className="color-box color-cyan" />
-                <span className="color-box color-white" />
-              </div>
-            </div>
-          </div>
-        );
+        output = renderNeofetchOutput();
         break;
 
       case 'theme':
